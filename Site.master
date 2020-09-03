@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Online Pilgrimage Portal</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .style1
+    {
+        text-decoration:underline;
+        background-color:ActiveBorder;
+        font-family:Algerian;
+        font-size: large;
+    }
+    .style2
+    {
+        color:Silver;
+        font-family:Comic Sans MS;
+        font-size:medium;
+    }
+        
+    </style>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1 class="style1"><strong class="style2">pilgrimage to</strong></h1>
+                   <div class="style1">mathura-vrindavan </div>
+                   </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+                    onmenuitemclick="NavigationMenu_MenuItemClick1">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About Temples" 
+                            Value="About Temples"/>
+                        <asp:MenuItem Text="Online Services" Value="Online Services"></asp:MenuItem>
+                        <asp:MenuItem Text="Timings" Value="Timings"></asp:MenuItem>
+                        <asp:MenuItem Text="Festivals" Value="Festivals"></asp:MenuItem>
+                        <asp:MenuItem Text="Maps" Value="Maps"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
